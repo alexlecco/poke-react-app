@@ -45,7 +45,7 @@ const App = () => {
           }
         </div>
       </div>
-      <button className="load-more">cargar más</button>
+      <button className="load-more" onClick={() => getAllPokemons()}>cargar más</button>
     </div>
   );
 }
