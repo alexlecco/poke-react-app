@@ -5,11 +5,21 @@ const App = () => {
   const [allPokemons, setAllPokemons] = useState([]);
   const [loadMore, setLoadMore] = useState('https://pokeapi.co/api/v2/pokemon?limit=20');
 
+  const createPokemonObject = results => {
+    results.forEach(async pokemon => {
+      const result = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
+      const data = await result.json();
+      
+      setAllPokemons(currentList => [...currentList, data]);
+    })
+  }
+
   const getAllPokemons = async () => {
     const response = await fetch(loadMore);
     const data = await response.json();
+    setLoadMore(data.next);
 
-    console.log(data)
+    createPokemonObject(data.results);
   }
 
   useEffect(() => {
