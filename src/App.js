@@ -30,7 +30,7 @@ const App = () => {
     <div className="app-container">
       <h1 className="title">Poke React App</h1>
       <div className="pokemon-container">
-
+        {allPokemons.map(pokemon => <li>{pokemon.name}</li>)}
       </div>
       <button className="load-more">cargar más</button>
     </div>
